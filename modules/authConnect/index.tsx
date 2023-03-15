@@ -10,6 +10,7 @@ import {
 } from "@/service/account";
 import { MUMBAI_CHAINID } from "@/utils/constants";
 import useInTranscation from "@/hooks/useInTransaction";
+import Button from "@/components/button";
 
 type PropsWithOnClick = PropsWithChildren<{
   onClick?: () => void;
@@ -45,17 +46,17 @@ const AuthConnect: React.FC<PropsWithOnClick> = ({
 
   if (!account || !chainMatch) {
     return (
-      <button
+      <Button
         className={cx(
           className,
           inTransaction && "pointer-events-none opacity-30",
-          "flex flex-row justify-center items-center"
+          "flex flex-row justify-center items-center w-[256px] h-[64px] rounded-[6px] text-[16px] font-normal"
         )}
         onClick={handleClick}
         {...props}
       >
         <>{account ? "switch to mumbai" : "connect wallet"}</>
-      </button>
+      </Button>
     );
   } else {
     return children as React.ReactElement;
