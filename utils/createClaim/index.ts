@@ -5,7 +5,6 @@ export const createClaim = async () => {
     const res = await fetchApi({
       path: "create",
     });
-    debugger;
     const processedRes = JSON.stringify(res);
     console.log("res", processedRes);
   } catch (err) {

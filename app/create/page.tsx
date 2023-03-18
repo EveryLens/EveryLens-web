@@ -1,8 +1,23 @@
 "use client";
+import { useState, useCallback } from "react";
+import { QRCodeSVG } from "qrcode.react";
 import AuthConnect from "@/modules/authConnect";
-import { createClaim } from "@/utils/createClaim";
+import { useAccount } from "@/service/account";
+// import { createClaim } from "@/utils/createClaim";
+import { signIn } from "@/service/claim";
 import Button from "@/components/button";
+
 const Create: React.FC = () => {
+  const [claimData, setClaimData] = useState("");
+  const account = useAccount();
+  const createClaim = useCallback(async () => {
+    try {
+      let res = await signIn(account);
+      setClaimData(res);
+    } catch (err) {
+      console.log(err);
+    }
+  }, [account]);
   return (
     <div className="grid grid-cols-2">
       <div>
@@ -30,8 +45,14 @@ const Create: React.FC = () => {
           </ul>
         </div>
         <AuthConnect>
-          <Button className="w-[256px] h-[64px] rounded-[6px] text-[16px] font-normal" onClick={createClaim}>Claim</Button>
+          <Button
+            className="w-[256px] h-[64px] rounded-[6px] text-[16px] font-normal"
+            onClick={createClaim}
+          >
+            Claim
+          </Button>
         </AuthConnect>
+        {claimData && <QRCodeSVG value={claimData} />}
       </div>
       <AboutUs />
     </div>
