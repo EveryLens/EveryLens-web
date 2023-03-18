@@ -23,7 +23,7 @@ const Home: React.FC = () => {
             </Button>
           </Link>
         </div>
-        <Link href="/create">
+        <Link href="/post">
           <Button className="w-[256px] h-[64px] rounded-[6px] text-[16px] font-normal">
             Post
           </Button>
