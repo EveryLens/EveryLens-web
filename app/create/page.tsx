@@ -12,6 +12,7 @@ const Create: React.FC = () => {
   const account = useAccount();
   const createClaim = useCallback(async () => {
     try {
+      // fetch("/api/create");
       let res = await signIn(account);
       setClaimData(res);
     } catch (err) {
