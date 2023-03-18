@@ -1,18 +1,21 @@
 "use client";
-import { useFetchPublications, usePublications } from "@/service/lens";
-import Card from "@/components/card";
+import { useFetchPublications, usePosts } from "@/service/lens";
 import { useEffect } from "react";
+import PostCard from "@/modules/postCard";
 const Post: React.FC = () => {
   const fetchPublications = useFetchPublications();
-  const publications = usePublications();
+  const posts = usePosts();
+  console.log("posts", posts);
   useEffect(() => {
     fetchPublications();
   }, []);
   return (
     <div>
-      {publications?.items.map((item) => {
-        return <Card content={item.metadata.content ?? ""}></Card>;
-      })}
+      {posts.map((post, index) => (
+        <div key={index} className="mt-[10px]">
+          <PostCard content={post.content} url={post.url} className="w-4/5" />
+        </div>
+      ))}
     </div>
   );
 };
