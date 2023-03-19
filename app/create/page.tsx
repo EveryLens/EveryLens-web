@@ -20,7 +20,7 @@ const Create: React.FC = () => {
     }
   }, [account]);
   return (
-    <div className="grid grid-cols-2">
+    <div className="grid grid-cols-1 sm:grid-cols-2">
       <div>
         <div className="mb-[42px]">
           <h2 className="text-[36px] font-semibold">Prerequisites: </h2>
@@ -45,15 +45,19 @@ const Create: React.FC = () => {
             </li>
           </ul>
         </div>
-        <AuthConnect>
-          <Button
-            className="w-[256px] h-[64px] rounded-[6px] text-[16px] font-normal"
-            onClick={createClaim}
-          >
-            Claim
-          </Button>
-        </AuthConnect>
-        {claimData && <QRCodeSVG value={claimData} />}
+        <div>
+          {!claimData && (
+            <AuthConnect>
+              <Button
+                className="w-[256px] h-[64px] rounded-[6px] text-[16px] font-normal"
+                onClick={createClaim}
+              >
+                Claim
+              </Button>
+            </AuthConnect>
+          )}
+          {claimData && <QRCodeSVG value={claimData} size={256} />}
+        </div>
       </div>
       <AboutUs />
     </div>
