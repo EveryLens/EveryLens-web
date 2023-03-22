@@ -2,6 +2,7 @@
 import { useFetchPublications, usePosts } from "@/service/lens";
 import { useEffect } from "react";
 import PostCard from "@/modules/postCard";
+import PostBoard from "@/modules/postBoard";
 const Post: React.FC = () => {
   const fetchPublications = useFetchPublications();
   const posts = usePosts();
@@ -10,12 +11,15 @@ const Post: React.FC = () => {
     fetchPublications();
   }, []);
   return (
-    <div>
-      {posts.map((post, index) => (
-        <div key={index} className="mt-[10px]">
-          <PostCard content={post.content} url={post.url} className="w-4/5" />
-        </div>
-      ))}
+    <div className="flex flex-row gap-x-[16px] w-full min-h-screen">
+      <div>
+        {posts.map((post, index) => (
+          <div key={index} className="mb-[10px]">
+            <PostCard content={post.content} url={post.url} />
+          </div>
+        ))}
+      </div>
+      <PostBoard className="border-2 border-black"/>
     </div>
   );
 };

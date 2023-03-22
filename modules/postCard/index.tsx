@@ -8,7 +8,7 @@ interface PostCardProps {
 const PostCard: React.FC<PostCardProps> = ({ content, url, className }) => {
   return (
     <div
-      className={cx("p-[20px] flex flex-col border-2 border-solid border-[#000000]", className)}
+      className={cx("p-[20px] flex flex-col border-2 border-solid border-black", className)}
     >
       <div>{content}</div>
       {url &&
