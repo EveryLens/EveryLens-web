@@ -82,7 +82,30 @@ const subStatusQuery = lensStore.subscribe(
     );
     try {
       let statusRes = await statusResultPromise;
-      lensStore.setState({ lensProved: !!statusRes });
+      lensStore.setState({ lensProved: !!statusRes, statusQueryUrl: "" });
     } catch (err) {}
   }
 );
+
+interface PostReq {
+  name?: string;
+  content?: string;
+}
+export const post = async (postReq: PostReq) => {
+  const fetchPublication = useFetchPublications();
+  try {
+    let result = await fetchApi({
+      path: `http://localhost:3000/post?name=${
+        postReq.name ?? "EveryLensBot"
+      }&content=${postReq.content}&description='EveryLensPost'`,
+      params: {
+        name: postReq.name ?? "EveryLensBot",
+        content: postReq.content,
+        description: "EveryLensPost",
+      },
+    });
+    await fetchPublication();
+  } catch (err) {
+    console.log(err);
+  }
+};

@@ -10,7 +10,7 @@ async function* endlessGenerator() {
 
 const waitAsyncResult = <T extends () => Promise<any>>(
   fetcher: T,
-  maxWaitTime: number = 44,
+  maxWaitTime: number = 100,
   interval = 3
 ) => {
   let isStop = false;
