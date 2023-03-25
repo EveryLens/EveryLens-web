@@ -17,6 +17,7 @@ export const publicationItemsTrans = (items: PublicationFragment[]) => {
       mainContentFocus: metadata.mainContentFocus,
       content: metadata.content ?? "",
       url: url,
+      name: metadata.name ?? "",
     });
   });
   return tempPosts;

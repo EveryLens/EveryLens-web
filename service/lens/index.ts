@@ -18,6 +18,7 @@ export interface Post {
   mainContentFocus: PublicationMainFocus;
   content: string;
   url?: string[];
+  name?: string;
 }
 
 export interface LensStore {
@@ -63,7 +64,7 @@ export const verify = async (address: string) => {
     lensStore.setState({ statusQueryUrl: result.statusQueryUrl });
     return result;
   } catch (err) {
-    throw err;
+    alert("Failed to verify");
   }
 };
 
@@ -92,7 +93,7 @@ interface PostReq {
   content?: string;
 }
 export const post = async (postReq: PostReq) => {
-  const fetchPublication = useFetchPublications();
+  const fetchPublication = lensStore.getState().fetchPublication;
   try {
     let result = await fetchApi({
       path: `http://localhost:3000/post?name=${
@@ -106,6 +107,7 @@ export const post = async (postReq: PostReq) => {
     });
     await fetchPublication();
   } catch (err) {
+    alert("Failed to post");
     console.log(err);
   }
 };

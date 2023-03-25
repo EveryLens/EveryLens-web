@@ -6,20 +6,20 @@ import PostBoard from "@/modules/postBoard";
 const Post: React.FC = () => {
   const fetchPublications = useFetchPublications();
   const posts = usePosts();
-  console.log("posts", posts);
+
   useEffect(() => {
     fetchPublications();
   }, []);
   return (
     <div className="flex flex-row gap-x-[16px] w-full min-h-screen">
-      <div>
+      <div className="flex-auto">
         {posts.map((post, index) => (
           <div key={index} className="mb-[10px]">
-            <PostCard content={post.content} url={post.url} />
+            <PostCard content={post.content} url={post.url} name={post.name} />
           </div>
         ))}
       </div>
-      <PostBoard className="border-2 border-black"/>
+      <PostBoard className="border-2 border-black" />
     </div>
   );
 };

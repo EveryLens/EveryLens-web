@@ -51,7 +51,7 @@ export const signIn = async (address: string) => {
     claimStore.setState({ statusQueryUrl: result.statusQueryUrl });
     return result;
   } catch (err) {
-    throw err;
+    alert("Failed to sign in");
   }
 };
 
@@ -63,7 +63,7 @@ export const claim = async (address: string) => {
     });
     return result;
   } catch (err) {
-    throw err;
+    alert("Failed to create claim, please maker sure you have a lens profile");
   }
 };
 

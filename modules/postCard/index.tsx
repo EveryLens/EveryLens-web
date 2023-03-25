@@ -1,15 +1,25 @@
 import cx from "clsx";
 import Image from "next/image";
 interface PostCardProps {
+  name?: string;
   content: string;
   url?: string[];
   className?: string;
 }
-const PostCard: React.FC<PostCardProps> = ({ content, url, className }) => {
+const PostCard: React.FC<PostCardProps> = ({
+  content,
+  url,
+  className,
+  name,
+}) => {
   return (
     <div
-      className={cx("p-[20px] flex flex-col border-2 border-solid border-black", className)}
+      className={cx(
+        "p-[20px] flex flex-col border-2 border-solid border-black",
+        className
+      )}
     >
+      {name && <div className="mb-[5px] font-medium">{name} : </div>}
       <div>{content}</div>
       {url &&
         url.map((e, i) => (
