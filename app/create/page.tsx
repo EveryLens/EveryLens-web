@@ -75,28 +75,6 @@ const AboutUs: React.FC = () => {
           the identity that holds the public lens profile) that posted on
           EveryLens. Of course No!{" "}
         </li>
-        <li>
-          Our verifier contract will verify your proof and if your proof shows
-          you did hold a lens profile, then it will dispatch a pseudonym for you
-          and posts what your content on Lens with EveryLensBot
-        </li>
-        <li>
-          Wait a minute, I've interacted with blockchain, ain't my identity
-          public?
-        </li>
-        <li>
-          The request is sent by the address managed by your Polygon ID and it
-          has NO RELEVANCE WITH YOUR ADDRESS THAT HOLDS YOUR PUBLIC LENS
-          PROFILE! Besides, you can always create new address by removing your
-          wallet from Polygon ID and create a new one. Then go back to EveryLens
-          and claim a new VC. Boom! You just got your new cover. Who knows who
-          the new cover represents! Nobody but yourself, lol{" "}
-        </li>
-        <li>
-          Last but lease, to prevent abuse of EveryLens, every VC as a 7-day
-          verifialbe time, which means you need to claim a new VC every 7 days
-          :({" "}
-        </li>
       </ul>
     </div>
   );
