@@ -58,7 +58,8 @@ interface VerifyResponse {
 export const verify = async (address: string) => {
   try {
     let result: VerifyResponse = await fetchApi({
-      path: `http://localhost:3000/verify?address=${address}`,
+      // path: `http://localhost:3000/verify?address=${address}`,
+      path: `https://every-lens-service.vercel.app/verify?address=${address}`,
       params: { address: address },
     });
     lensStore.setState({ statusQueryUrl: result.statusQueryUrl });
@@ -96,7 +97,10 @@ export const post = async (postReq: PostReq) => {
   const fetchPublication = lensStore.getState().fetchPublication;
   try {
     let result = await fetchApi({
-      path: `http://localhost:3000/post?name=${
+      // path: `http://localhost:3000/post?name=${
+      //   postReq.name ?? "EveryLensBot"
+      // }&content=${postReq.content}&description='EveryLensPost'`,
+      path: `https://every-lens-service.vercel.app/post?name=${
         postReq.name ?? "EveryLensBot"
       }&content=${postReq.content}&description='EveryLensPost'`,
       params: {
