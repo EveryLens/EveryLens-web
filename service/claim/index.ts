@@ -42,8 +42,8 @@ interface SignInResponse {
 export const signIn = async (address: string) => {
   try {
     let result: SignInResponse = await fetchApi({
-      path: `http://localhost:3000/sign-in?address=${address}`,
-      // path: `https://every-lens-service.vercel.app/sign-in?address=${address}`,
+      // path: `http://localhost:3000/sign-in?address=${address}`,
+      path: `https://every-lens-service.vercel.app/sign-in?address=${address}`,
       params: { address: address },
     });
     if (result.status && result.status === 400) {
@@ -59,8 +59,8 @@ export const signIn = async (address: string) => {
 export const claim = async (address: string) => {
   try {
     let result = await fetchApi({
-      path: `http://localhost:3000/claim?address=${address}`,
-      // path: `https://every-lens-service.vercel.app/claim?address=${address}`,
+      // path: `http://localhost:3000/claim?address=${address}`,
+      path: `https://every-lens-service.vercel.app/claim?address=${address}`,
       params: { address: address },
     });
     return result;
